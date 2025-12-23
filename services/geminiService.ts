@@ -6,9 +6,19 @@ export const analyzeCodeWithAI = async (
   syntaxError?: string
 ): Promise<Partial<BugAnalysis>> => {
   try {
-    // Uses the pre-configured process.env.API_KEY automatically
+    // Get API key from environment variable
+    const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+    
+    // Check if API key exists
+    if (!apiKey) {
+      throw new Error(
+        "API key not found. Please check your .env file and ensure VITE_GEMINI_API_KEY is set."
+      );
+    }
+
+    // Initialize Google Generative AI with environment variable
     const ai = new GoogleGenAI({
-      apiKey: "AIzaSyBN5-xD7i1N9NUkUIPmSTjCL7R6DmPx5xs",
+      apiKey: apiKey,
     });
 
     // Using gemini-3-flash-preview as the standard model for coding tasks
