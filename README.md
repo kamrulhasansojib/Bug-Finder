@@ -70,7 +70,7 @@ npm run dev
 yarn dev
 ```
 
-5. Open your browser and visit `http://localhost:5173`
+5. Open your browser and visit the website `http://localhost:5173`
 
 ## 🚀 Usage
 
